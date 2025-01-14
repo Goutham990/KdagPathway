@@ -1,0 +1,39 @@
+graph TB
+    subgraph Input Layer
+        GD[Google Drive Connector]
+        API[FastAPI Endpoints]
+        UI[Web Interface]
+    end
+
+    subgraph Processing Layer
+        PP[Paper Processor]
+        PE[Paper Embedder]
+        VS[Vector Store]
+        LLM[Language Model]
+    end
+
+    subgraph Analysis Layer
+        PC[Publishability Classifier]
+        CS[Conference Selector]
+        RA[Rationale Generator]
+    end
+
+    subgraph Storage Layer
+        PDB[(Paper Database)]
+        VDB[(Vector Database)]
+        CDB[(Conference Profiles)]
+    end
+
+    GD --> PP
+    API --> PP
+    UI --> PP
+    PP --> PE
+    PE --> VS
+    VS --> PC
+    VS --> CS
+    PC --> RA
+    CS --> RA
+    PE -.-> VDB
+    PP -.-> PDB
+    CS -.-> CDB
+

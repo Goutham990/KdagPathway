@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant U as User
+    participant API as API Layer
+    participant P as Processor
+    participant V as VectorStore
+    participant LLM as LLM Service
+    participant DB as Database
+
+    U->>API: Submit Paper
+    API->>P: Process Paper
+    P->>V: Generate Embeddings
+    P->>LLM: Extract Features
+    LLM->>P: Return Analysis
+    P->>V: Store Embeddings
+    V->>P: Similar Papers
+    P->>DB: Store Results
+    P->>API: Return Results
+    API->>U: Final Response

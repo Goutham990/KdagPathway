@@ -1,0 +1,5 @@
+# Save the results to CSV
+data[['Paper ID', 'publishable', 'conference', 'rationale']].to_csv('results.csv', index=False)
+
+
+pip install scikit-learn transformers pandas torch pathway
